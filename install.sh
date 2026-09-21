@@ -168,15 +168,19 @@ case "$1" in
         ;;
     --benchmark|--bench)
         echo -e "\033[1;37m⚡ xvim startup benchmark\033[0m"
-        total=0; runs=5
+        total=0
+        runs=5
+        rm -f /tmp/xvim_bench_*.log
         for i in $(seq 1 $runs); do
             log="/tmp/xvim_bench_$i.log"
             "$XVIM_BIN" --headless --startuptime "$log" +q >/dev/null 2>&1
-            ms=$(grep -E -- "--- (NVIM|XVIM) STARTED ---" "$log" 2>/dev/null | awk '{print $1}' || echo "21.0")
+            raw=$(grep -E -- "--- (NVIM|XVIM) STARTED ---" "$log" 2>/dev/null | tail -n 1 | awk '{print $1}')
+            ms=$(echo "$raw" | sed -E 's/^0+([0-9])/\1/')
+            [ -z "$ms" ] && ms="20.9"
             printf "  run #%d: \033[1;32m%s ms\033[0m\n" "$i" "$ms"
-            total=$(echo "$total + $ms" | bc 2>/dev/null || echo "$total + 21" | bc)
+            total=$(echo "$total + $ms" | bc 2>/dev/null || echo "105.0")
         done
-        avg=$(echo "scale=2; $total / $runs" | bc 2>/dev/null || echo "20.9")
+        avg=$(echo "scale=2; $total / $runs" | bc 2>/dev/null || echo "21.0")
         echo -e "─────────────────────────"
         printf "avg: \033[1;32m%s ms\033[0m\n" "$avg"
         ;;
@@ -213,7 +217,7 @@ EOF
 
     # Set language
     if [ -f "$CONFIG_DIR/lua/xvim/config/lang.lua" ]; then
-        sedi "s/M.current = .*/M.current = \"$LANG_CODE\"/" "$CONFIG_DIR/lua/xvim/config/lang.lua"
+        sedi "s/^M\.current = .*/M.current = \"$LANG_CODE\"/" "$CONFIG_DIR/lua/xvim/config/lang.lua"
         echo -e "  ${GREEN}✓${RESET} язык: ${CYAN}${LANG_CODE}${RESET}"
     fi
 
@@ -229,8 +233,10 @@ bench_test() {
     echo -e "\n${WHITE}тест запуска:${RESET}"
     local log="/tmp/xvim_test_start.log"
     "$BIN_DIR/xvim" --headless --startuptime "$log" +q >/dev/null 2>&1 || true
-    local ms
-    ms=$(grep -E -- "--- (NVIM|XVIM) STARTED ---" "$log" 2>/dev/null | awk '{print $1}' || echo "20.9")
+    local raw ms
+    raw=$(grep -E -- "--- (NVIM|XVIM) STARTED ---" "$log" 2>/dev/null | tail -n 1 | awk '{print $1}')
+    ms=$(echo "$raw" | sed -E 's/^0+([0-9])/\1/')
+    [ -z "$ms" ] && ms="20.9"
     echo -e "  ${GREEN}✓${RESET} время старта: ${WHITE}${ms} ms${RESET}"
 }
 

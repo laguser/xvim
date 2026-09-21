@@ -52,19 +52,20 @@ end
 
 function M.set_lang(lang)
   if lang == "ru" or lang == "en" then
-    M.current = "ru"
+    M.current = lang
     vim.g.xvim_lang = lang
     local config_file = vim.fn.stdpath("config") .. "/lua/xvim/config/lang.lua"
-    -- Persist change
-    local lines = vim.fn.readfile(config_file)
-    for i, line in ipairs(lines) do
-      if line:match('^M%.current%s*=') then
-        lines[i] = string.format('M.current = "ru"
-        break
+    if vim.fn.filereadable(config_file) == 1 then
+      local lines = vim.fn.readfile(config_file)
+      for i, line in ipairs(lines) do
+        if line:match("^M%.current%s*=") then
+          lines[i] = string.format('M.current = "%s"', lang)
+          break
+        end
       end
+      vim.fn.writefile(lines, config_file)
     end
-    vim.fn.writefile(lines, config_file)
-    vim.notify("⚡ [XVIM] Language switched to: " .. lang:upper(), vim.log.levels.INFO)
+    vim.notify("[XVIM] Language set to: " .. lang:upper(), vim.log.levels.INFO)
   else
     vim.notify("Usage: :XVimLang ru | en", vim.log.levels.WARN)
   end
