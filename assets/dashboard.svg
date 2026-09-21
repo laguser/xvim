@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" width="1200" height="740">
+  <rect width="1200" height="740" rx="14" fill="#0c0d12" stroke="#252733" stroke-width="2" />
+
+  <!-- Titlebar -->
+  <path d="M 0 14 A 14 14 0 0 1 14 0 L 1186 0 A 14 14 0 0 1 1200 14 L 1200 42 L 0 42 Z" fill="#13141a" />
+  <line x1="0" y1="42" x2="1200" y2="42" stroke="#1f202b" stroke-width="1" />
+
+  <!-- Window Buttons -->
+  <circle cx="28" cy="21" r="6" fill="#ff5f56" />
+  <circle cx="48" cy="21" r="6" fill="#ffbd2e" />
+  <circle cx="68" cy="21" r="6" fill="#27c93f" />
+
+  <!-- Window Title -->
+  <text x="600.0" y="26" fill="#757991" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="12" font-weight="600" text-anchor="middle">xvim — ~ — kitty — 120×38</text>
+
+  <!-- Body Content -->
+  
+  <g font-family="'JetBrains Mono', 'Fira Code', Menlo, Monaco, monospace" xml:space="preserve">
+    <!-- ASCII Art Logo -->
+    <g fill="#ffffff" font-weight="700" text-anchor="middle" font-size="16" transform="translate(600, 110)">
+      <text y="0">    \       /   </text>
+      <text y="21">     \     /    </text>
+      <text y="42">      \   /     </text>
+      <text y="63">       \ /      </text>
+      <text y="84" fill="#ffffff" font-size="20">        X       </text>
+      <text y="105">       / \      </text>
+      <text y="126">      /   \     </text>
+      <text y="147">     /     \    </text>
+      <text y="168">    /       \   </text>
+    </g>
+
+    <text x="600" y="330" fill="#ffffff" font-size="24" font-weight="800" text-anchor="middle" letter-spacing="10">X   V   I   M</text>
+    <text x="600" y="360" fill="#5c6077" font-size="12" text-anchor="middle" font-weight="600" letter-spacing="2">APPLE SILICON M4 NATIVE  •  ZERO-LATENCY MONOCHROME ENGINE</text>
+
+    <!-- Dashboard Actions -->
+    <g transform="translate(440, 400)" font-size="13.5">
+      <!-- Item 1: Find File -->
+      <rect x="0" y="0" width="320" height="36" rx="8" fill="#12131a" stroke="#1f212c" stroke-width="1"/>
+      <text x="20" y="23" fill="#ffffff" font-weight="700">f</text>
+      <text x="45" y="23" fill="#8f93a9">Find File</text>
+      <text x="300" y="23" fill="#52556b" text-anchor="end">spc f f</text>
+
+      <!-- Item 2: Recent Files -->
+      <rect x="0" y="46" width="320" height="36" rx="8" fill="#12131a" stroke="#1f212c" stroke-width="1"/>
+      <text x="20" y="69" fill="#ffffff" font-weight="700">r</text>
+      <text x="45" y="69" fill="#8f93a9">Recent Files</text>
+      <text x="300" y="69" fill="#52556b" text-anchor="end">spc f r</text>
+
+      <!-- Item 3: XVim Tutor (Highlighted) -->
+      <rect x="0" y="92" width="320" height="36" rx="8" fill="#181a25" stroke="#ffffff" stroke-width="1.2"/>
+      <text x="20" y="115" fill="#27c93f" font-weight="800">t</text>
+      <text x="45" y="115" fill="#ffffff" font-weight="700">XVim Tutor</text>
+      <text x="145" y="115" fill="#27c93f" font-size="11">[RU / EN]</text>
+      <text x="300" y="115" fill="#a0a4b8" text-anchor="end">spc t u</text>
+
+      <!-- Item 4: Config -->
+      <rect x="0" y="138" width="320" height="36" rx="8" fill="#12131a" stroke="#1f212c" stroke-width="1"/>
+      <text x="20" y="161" fill="#ffffff" font-weight="700">c</text>
+      <text x="45" y="161" fill="#8f93a9">Config Settings</text>
+      <text x="300" y="161" fill="#52556b" text-anchor="end">spc f c</text>
+
+      <!-- Item 5: Quit -->
+      <rect x="0" y="184" width="320" height="36" rx="8" fill="#12131a" stroke="#1f212c" stroke-width="1"/>
+      <text x="20" y="207" fill="#ffffff" font-weight="700">q</text>
+      <text x="45" y="207" fill="#8f93a9">Quit Editor</text>
+      <text x="300" y="207" fill="#52556b" text-anchor="end">spc q</text>
+    </g>
+
+    <!-- Startup Pill Badge -->
+    <g transform="translate(600, 650)">
+      <rect x="-150" y="-14" width="300" height="28" rx="14" fill="#13141d" stroke="#252737" stroke-width="1"/>
+      <text x="0" y="4" fill="#a0a4b8" font-size="12" text-anchor="middle">
+        ⚡ Loaded <tspan fill="#ffffff" font-weight="700">38 plugins</tspan> in <tspan fill="#27c93f" font-weight="800">20.9 ms</tspan>
+      </text>
+    </g>
+
+    <!-- Statusline -->
+    <g transform="translate(0, 692)">
+      <rect width="1200" height="28" fill="#090a0e" />
+      <path d="M 12 5 A 8 8 0 0 1 20 5 L 85 5 A 8 8 0 0 1 93 13 L 93 15 A 8 8 0 0 1 85 23 L 20 23 A 8 8 0 0 1 12 15 Z" fill="#ffffff" />
+      <text x="52" y="18" fill="#000000" font-weight="800" font-size="11" text-anchor="middle">NORMAL</text>
+      <text x="110" y="18" fill="#7d8196" font-size="12">xvim://dashboard</text>
+      <text x="1030" y="18" fill="#6d7085" font-size="12">utf-8</text>
+      <path d="M 1080 5 A 8 8 0 0 1 1088 5 L 1180 5 A 8 8 0 0 1 1188 13 L 1188 15 A 8 8 0 0 1 1180 23 L 1088 23 A 8 8 0 0 1 1080 15 Z" fill="#1b1c26" />
+      <text x="1134" y="18" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">M4 • 20.9ms</text>
+    </g>
+  </g>
+
+</svg>

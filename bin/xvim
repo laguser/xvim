@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# ⚡ XVIM - High-Performance Minimalist Editor
+# ==============================================================================
+
+set -e
+
+XVIM_BIN="${XVIM_BIN:-$HOME/.local/xvim/bin/xvim}"
+if [ ! -x "$XVIM_BIN" ]; then
+    XVIM_BIN="$(command -v nvim 2>/dev/null || echo "nvim")"
+fi
+CONFIG_DIR="$HOME/.config/xvim"
+CACHE_DIR="$HOME/.cache/xvim"
+
+show_banner() {
+    cat << 'EOF'
+    \       /   
+     \     /    
+      \   /     
+       \ /      
+        X       
+       / \      
+      /   \     
+     /     \    
+    /       \   
+
+  X V I M
+  Engine: Apple Silicon M4 Native
+  Config: ~/.config/xvim
+EOF
+}
+
+cmd_benchmark() {
+    echo -e "\033[1;37m⚡ XVIM STARTUP BENCHMARK\033[0m"
+    echo -e "\033[1;30m──────────────────────────────────────────\033[0m"
+    
+    local total=0
+    local runs=5
+    rm -f /tmp/xvim_bench_*.log
+    echo -e "Выполняю $runs замеров запуска горячего кэша..."
+
+    for i in $(seq 1 $runs); do
+        local log_file="/tmp/xvim_bench_$i.log"
+        "$XVIM_BIN" --headless --startuptime "$log_file" +q >/dev/null 2>&1
+        local ms
+        ms=$(grep -- "--- NVIM STARTED ---" "$log_file" | awk '{print $1}')
+        printf "  Прогон #%d: \033[1;32m%s ms\033[0m\n" "$i" "$ms"
+        total=$(echo "$total + $ms" | bc)
+    done
+
+    local avg
+    avg=$(echo "scale=2; $total / $runs" | bc)
+    echo -e "\033[1;30m──────────────────────────────────────────\033[0m"
+    printf "🚀 \033[1;37mСреднее время старта:\033[0m \033[1;32m%s ms\033[0m\n" "$avg"
+}
+
+cmd_clean() {
+    echo -e "Очистка кэша xvim..."
+    rm -rf "$CACHE_DIR" /tmp/xvim* 2>/dev/null || true
+    echo -e "\033[1;32m✓ Кэш очищен.\033[0m"
+}
+
+case "$1" in
+    --version|-v)
+        show_banner
+        echo ""
+        "$XVIM_BIN" --version
+        ;;
+    --benchmark|--bench)
+        cmd_benchmark
+        ;;
+    --tutor|-t)
+        exec "$XVIM_BIN" "+XVimTutor"
+        ;;
+    --clean)
+        cmd_clean
+        ;;
+    --health)
+        "$XVIM_BIN" "+checkhealth"
+        ;;
+    --help|-h)
+        show_banner
+        echo -e "\nИспользование: xvim [опции] [файлы...]"
+        echo -e "  --tutor, -t        Интерактивный туториал"
+        echo -e "  --benchmark        Бенчмарк времени старта"
+        echo -e "  --version, -v      Информация о версии"
+        echo -e "  --clean            Очистить кэш"
+        echo -e "  --health           Проверка checkhealth"
+        ;;
+    *)
+        exec "$XVIM_BIN" "$@"
+        ;;
+esac
