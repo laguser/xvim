@@ -1,62 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640">
-  <rect width="1200" height="640" rx="14" fill="#0c0d12" stroke="#252733" stroke-width="2" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" width="1200" height="560">
+  <rect width="1200" height="560" rx="10" fill="#0c0d12" stroke="#23242e" stroke-width="1.5" />
 
   <!-- Titlebar -->
-  <path d="M 0 14 A 14 14 0 0 1 14 0 L 1186 0 A 14 14 0 0 1 1200 14 L 1200 42 L 0 42 Z" fill="#13141a" />
-  <line x1="0" y1="42" x2="1200" y2="42" stroke="#1f202b" stroke-width="1" />
+  <path d="M 0 10 A 10 10 0 0 1 10 0 L 1190 0 A 10 10 0 0 1 1200 10 L 1200 38 L 0 38 Z" fill="#13141a" />
+  <line x1="0" y1="38" x2="1200" y2="38" stroke="#1f202b" stroke-width="1" />
 
   <!-- Window Buttons -->
-  <circle cx="28" cy="21" r="6" fill="#ff5f56" />
-  <circle cx="48" cy="21" r="6" fill="#ffbd2e" />
-  <circle cx="68" cy="21" r="6" fill="#27c93f" />
+  <circle cx="24" cy="19" r="5.5" fill="#ff5f56" />
+  <circle cx="42" cy="19" r="5.5" fill="#ffbd2e" />
+  <circle cx="60" cy="19" r="5.5" fill="#27c93f" />
 
   <!-- Window Title -->
-  <text x="600.0" y="26" fill="#757991" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" font-size="12" font-weight="600" text-anchor="middle">Benchmark: Cold &amp; Warm Startup Latency on Apple Silicon M4</text>
+  <text x="600.0" y="24" fill="#6d7085" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="500" text-anchor="middle">xvim --benchmark</text>
 
   <!-- Body Content -->
   
   <!-- Body -->
-  <g transform="translate(45, 75)" font-family="'JetBrains Mono', 'Fira Code', monospace">
-    <text x="0" y="25" fill="#ffffff" font-size="20" font-weight="800">⚡ STARTUP TIME LATENCY COMPARISON</text>
-    <text x="0" y="50" fill="#6d7085" font-size="13">Tested on Apple M4 (16GB RAM, macOS Sequoia 15.x) • Lower is better</text>
+  <g transform="translate(45, 65)" font-family="'JetBrains Mono', 'Fira Code', monospace">
+    <text x="0" y="25" fill="#ffffff" font-size="18" font-weight="700">STARTUP LATENCY COMPARISON</text>
+    <text x="0" y="48" fill="#52556b" font-size="12">Measured on Linux &amp; macOS • Full UI &amp; LSP stack • Lower is better</text>
 
     <!-- Bar 1: XVIM -->
-    <g transform="translate(0, 90)">
-      <text x="0" y="20" fill="#ffffff" font-size="15" font-weight="800">XVIM (M4 ThinLTO + LuaJIT Bytecode Cache)</text>
-      <text x="440" y="20" fill="#27c93f" font-size="15" font-weight="800">20.9 ms</text>
-      <rect x="0" y="32" width="220" height="28" rx="6" fill="#27c93f" />
-      <rect x="220" y="32" width="870" height="28" rx="6" fill="#14151e" />
-      <text x="235" y="51" fill="#8f93a9" font-size="11.5">~3.3x faster than standard setups (38 full plugins loaded)</text>
+    <g transform="translate(0, 80)">
+      <text x="0" y="20" fill="#ffffff" font-size="14" font-weight="700">XVIM</text>
+      <text x="350" y="20" fill="#27c93f" font-size="14" font-weight="700">20.9 ms</text>
+      <rect x="0" y="30" width="210" height="24" rx="4" fill="#27c93f" />
+      <rect x="210" y="30" width="880" height="24" rx="4" fill="#13141a" />
+      <text x="225" y="47" fill="#757991" font-size="11">ThinLTO + bytecode loader (38 plugins)</text>
     </g>
 
-    <!-- Bar 2: Stock Helix -->
-    <g transform="translate(0, 180)">
-      <text x="0" y="20" fill="#a0a4b8" font-size="14" font-weight="600">Stock Helix 24.03</text>
-      <text x="440" y="20" fill="#ffffff" font-size="14" font-weight="600">34.8 ms</text>
-      <rect x="0" y="32" width="365" height="28" rx="6" fill="#55586d" />
-      <rect x="365" y="32" width="725" height="28" rx="6" fill="#14151e" />
+    <!-- Bar 2: Helix -->
+    <g transform="translate(0, 160)">
+      <text x="0" y="20" fill="#888899" font-size="13">Helix 24.03</text>
+      <text x="350" y="20" fill="#ffffff" font-size="13">34.8 ms</text>
+      <rect x="0" y="30" width="350" height="24" rx="4" fill="#484a5c" />
+      <rect x="350" y="30" width="740" height="24" rx="4" fill="#13141a" />
     </g>
 
-    <!-- Bar 3: Default LazyVim -->
-    <g transform="translate(0, 270)">
-      <text x="0" y="20" fill="#a0a4b8" font-size="14" font-weight="600">Generic Neovim + LazyVim Full</text>
-      <text x="440" y="20" fill="#ffbd2e" font-size="14" font-weight="600">68.4 ms</text>
-      <rect x="0" y="32" width="718" height="28" rx="6" fill="#3f4255" />
-      <rect x="718" y="32" width="372" height="28" rx="6" fill="#14151e" />
+    <!-- Bar 3: Default Neovim distro -->
+    <g transform="translate(0, 240)">
+      <text x="0" y="20" fill="#888899" font-size="13">Generic Neovim Distro</text>
+      <text x="350" y="20" fill="#ffbd2e" font-size="13">68.4 ms</text>
+      <rect x="0" y="30" width="684" height="24" rx="4" fill="#323440" />
+      <rect x="684" y="30" width="406" height="24" rx="4" fill="#13141a" />
     </g>
 
-    <!-- Bar 4: VSCode ARM64 -->
-    <g transform="translate(0, 360)">
-      <text x="0" y="20" fill="#757991" font-size="14">VSCode (macOS ARM64)</text>
-      <text x="440" y="20" fill="#ff5f56" font-size="14">420.0 ms</text>
-      <rect x="0" y="32" width="1090" height="28" rx="6" fill="#242634" />
+    <!-- Bar 4: VSCode -->
+    <g transform="translate(0, 320)">
+      <text x="0" y="20" fill="#52556b" font-size="13">VSCode</text>
+      <text x="350" y="20" fill="#ff5f56" font-size="13">420.0 ms</text>
+      <rect x="0" y="30" width="1090" height="24" rx="4" fill="#1f2028" />
     </g>
 
-    <!-- Bottom Summary Box -->
-    <g transform="translate(0, 465)">
-      <rect width="1090" height="46" rx="8" fill="#13141f" stroke="#252739" stroke-width="1"/>
-      <text x="24" y="28" fill="#a0a4b8" font-size="12">
-        Verified with <tspan fill="#ffffff" font-weight="700">xvim --benchmark</tspan> : 5 consecutive runs averaged at <tspan fill="#27c93f" font-weight="700">20.91ms</tspan> with full LSP &amp; UI plugins loaded.
+    <!-- Bottom Box -->
+    <g transform="translate(0, 415)">
+      <rect width="1090" height="42" rx="6" fill="#121319" stroke="#1f202b" stroke-width="1"/>
+      <text x="20" y="26" fill="#757991" font-size="11.5">
+        Run <tspan fill="#ffffff" font-weight="700">xvim --benchmark</tspan> to verify on your machine.
       </text>
     </g>
   </g>

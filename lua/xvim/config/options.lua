@@ -59,7 +59,11 @@ opt.showtabline = 2 -- Always show bufferline
 opt.laststatus = 3  -- Global statusline across splits
 
 -- 9. Clipboard & Mouse
-opt.clipboard = "unnamedplus"
+if vim.fn.has("mac") == 1 or vim.fn.executable("pbcopy") == 1 then
+  opt.clipboard = "unnamedplus"
+elseif vim.fn.executable("wl-copy") == 1 or vim.fn.executable("xclip") == 1 or vim.fn.executable("xsel") == 1 then
+  opt.clipboard = "unnamedplus"
+end
 opt.mouse = "a"
 
 -- 10. Smooth Scrolling
